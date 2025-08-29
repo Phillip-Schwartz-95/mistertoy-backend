@@ -8,7 +8,9 @@ app.use(express.json())
 
 // allow localhost in dev, all origins in prod
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? '*' : 'http://localhost:5173',
+  origin: process.env.NODE_ENV === 'production' 
+           ? 'https://phillip-schwartz-95.github.io/mistertoy-frontend/'
+           : 'http://localhost:5173',
   credentials: true
 }))
 
