@@ -5,7 +5,9 @@ import { toyService } from './services/toyService.js'
 const app = express()
 
 const allowedOrigins = [
-  'http://localhost:5174', 
+  'http://localhost:5173',
+  'https://localhost:5174',
+  'http://localhost:5175',
   'https://phillip-schwartz-95.github.io'
 ]
 
