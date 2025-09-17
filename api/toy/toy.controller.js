@@ -1,20 +1,27 @@
 import { toyService } from './toy.service.js'
 
 export async function getToys(req, res) {
+  console.log('GET /api/toy called with query:', req.query)
   try {
     const filterBy = {
       name: req.query.name || '',
       inStock:
         req.query.inStock === 'true' ? true :
-        req.query.inStock === 'false' ? false : undefined,
+          req.query.inStock === 'false' ? false : undefined,
       labels: req.query.labels ? req.query.labels.split(',') : [],
       minPrice: req.query.minPrice ? +req.query.minPrice : undefined,
     }
+    console.log('FilterBy:', filterBy)
+
     const toys = await toyService.query(filterBy)
+    console.log('Found toys:', toys)
     res.json(toys)
+
   } catch (err) {
-    res.status(500).send({ err: 'Failed to get toys' })
+    console.error('Error in GET /api/toy:', err)  // log full error
+    res.status(500).send({ err: 'Failed to get toys', details: err.message })
   }
+
 }
 
 export async function getToyById(req, res) {

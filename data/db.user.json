@@ -1,0 +1,14 @@
+[
+  {
+    "fullname": "Admin User",
+    "username": "admin",
+    "password": "$2b$10$z9urNRKqt1wLms73AzHXi.gmCQ..tkaehcYQ8qHa958THtP5RbT6q",
+    "isAdmin": true
+  },
+  {
+    "fullname": "Test User",
+    "username": "test",
+    "password": "$2b$10$aElIys4bm6Nx0ZSpvevfG.2vxyQ/T/ISrPmhpMuHRbwZ/R/VO.1hm",
+    "isAdmin": false
+  }
+]

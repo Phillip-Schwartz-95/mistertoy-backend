@@ -1,0 +1,26 @@
+[
+  {
+  "name": "Buzz Lightyear",
+  "price": 19.99,
+  "inStock": true,
+  "labels": ["Battery Powered", "Space"],
+  "msgs": [],
+  "createdAt": 1690000000000
+},
+  {
+  "name": "Barbie Doll",
+  "price": 14.99,
+  "inStock": true,
+  "labels": ["Fashion", "Doll"],
+  "msgs": [],
+  "createdAt": 1690000000000
+},
+{
+  "name": "Lego Set",
+  "price": 29.99,
+  "inStock": false,
+  "labels": ["Building", "Creative"],
+  "msgs": [],
+  "createdAt": 1690000000000
+}
+]

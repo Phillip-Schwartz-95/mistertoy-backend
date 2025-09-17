@@ -1,7 +1,5 @@
 import { MongoClient } from 'mongodb'
-
-const url = process.env.MONGO_URL || 'mongodb+srv://PhilS95:dbUserPassword@cluster0.uy2fx7z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
-const dbName = process.env.DB_NAME || 'mister_toy_db'
+import { config } from '../config/index.js'
 
 let dbConn = null
 
@@ -14,7 +12,8 @@ async function getCollection(collectionName) {
 
 async function _connect() {
   if (dbConn) return dbConn
-  const client = await MongoClient.connect(url)
-  dbConn = client.db(dbName)
+  const client = await MongoClient.connect(config.dbURL)
+  dbConn = client.db(config.dbName)
+  console.log('Connected to DB:', config.dbName)
   return dbConn
 }

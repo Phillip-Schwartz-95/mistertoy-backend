@@ -1,7 +1,7 @@
 // api/toy/toy.service.js
 import { ObjectId } from 'mongodb'
-import { dbService } from '../services/dbService.js'
-import { utilService } from '../services/utilService.js'
+import { dbService } from '../../services/dbService.js'
+import { utilService } from '../../services/utilService.js'
 
 export const toyService = {
   query,
@@ -15,17 +15,17 @@ export const toyService = {
 
 async function query(filterBy = {}) {
   const criteria = _buildCriteria(filterBy)
-  const col = await dbService.getCollection('toy')
+  const col = await dbService.getCollection('toys')
   return col.find(criteria).toArray()
 }
 
 async function getById(toyId) {
-  const col = await dbService.getCollection('toy')
+  const col = await dbService.getCollection('toys')
   return col.findOne({ _id: new ObjectId(toyId) })
 }
 
 async function add(toy) {
-  const col = await dbService.getCollection('toy')
+  const col = await dbService.getCollection('toys')
   const toyToAdd = {
     name: toy.name,
     price: +toy.price || 0,
@@ -40,7 +40,7 @@ async function add(toy) {
 }
 
 async function update(toy) {
-  const col = await dbService.getCollection('toy')
+  const col = await dbService.getCollection('toys')
   const id = new ObjectId(toy._id)
   const toSet = {
     name: toy.name,
@@ -53,14 +53,14 @@ async function update(toy) {
 }
 
 async function remove(toyId) {
-  const col = await dbService.getCollection('toy')
+  const col = await dbService.getCollection('toys')
   const { deletedCount } = await col.deleteOne({ _id: new ObjectId(toyId) })
   return deletedCount
 }
 
 // messages
 async function addToyMsg(toyId, msg) {
-  const col = await dbService.getCollection('toy')
+  const col = await dbService.getCollection('toys')
   const fullMsg = { ...msg, id: utilService.makeId(), createdAt: Date.now() }
   await col.updateOne(
     { _id: new ObjectId(toyId) },
@@ -70,7 +70,7 @@ async function addToyMsg(toyId, msg) {
 }
 
 async function removeToyMsg(toyId, msgId) {
-  const col = await dbService.getCollection('toy')
+  const col = await dbService.getCollection('toys')
   await col.updateOne(
     { _id: new ObjectId(toyId) },
     { $pull: { msgs: { id: msgId } } }
