@@ -2,6 +2,7 @@
 import { ObjectId } from 'mongodb'
 import { dbService } from '../../services/dbService.js'
 import { utilService } from '../../services/utilService.js'
+import { config } from '../../config/index.js'
 
 export const toyService = {
   query,
@@ -14,6 +15,11 @@ export const toyService = {
 }
 
 async function query(filterBy = {}) {
+
+  console.log('>>> DEBUG query() called with filterBy:', filterBy)
+  console.log('>>> DEBUG config.dbURL:', config.dbURL)
+  console.log('>>> DEBUG config.dbName:', config.dbName)
+  
   const criteria = _buildCriteria(filterBy)
   const col = await dbService.getCollection('toys')
   return col.find(criteria).toArray()

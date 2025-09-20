@@ -1,11 +1,9 @@
-import dotenv from 'dotenv'
-dotenv.config()
-
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import { toyRoutes } from './api/toy/toy.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
+import { reviewRoutes } from './api/review/review.routes.js'
 
 const app = express()
 
@@ -26,6 +24,7 @@ app.use(cors({
 // Mount Toy API
 app.use('/api/toy', toyRoutes)
 app.use('/api/auth', authRoutes)
+app.use('/api/review', reviewRoutes)
 
 const PORT = process.env.PORT || 3030
 app.listen(PORT, () => console.log(`Toy backend running on port ${PORT}`))

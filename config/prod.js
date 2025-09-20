@@ -1,4 +1,4 @@
 export const configProd = {
-  dbURL: process.env.MONGODB_URL, // Atlas connection string
-  dbName: 'mister_toy_db',               // same DB name in Atlas
+  dbURL: 'mongodb+srv://PhilS95:dbUserPassword@cluster0.uy2fx7z.mongodb.net/mister_toy_db?retryWrites=true&w=majority',
+  dbName: 'mister_toy_db',
 }

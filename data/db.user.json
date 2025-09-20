@@ -10,5 +10,11 @@
     "username": "test",
     "password": "$2b$10$aElIys4bm6Nx0ZSpvevfG.2vxyQ/T/ISrPmhpMuHRbwZ/R/VO.1hm",
     "isAdmin": false
+  },
+
+  {
+    "username": "test2",
+    "password": "1234",
+    "fullname": "Test User 2"
   }
 ]
