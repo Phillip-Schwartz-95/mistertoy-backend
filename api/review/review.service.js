@@ -56,8 +56,38 @@ async function add(review) {
       txt: review.txt
     }
     const collection = await dbService.getCollection('review')
-    await collection.insertOne(reviewToAdd)
-    return reviewToAdd
+    const { insertedId } = await collection.insertOne(reviewToAdd)
+
+    const [savedReview] = await collection.aggregate([
+      { $match: { _id: insertedId } },
+      {
+        $lookup: {
+          from: 'user',
+          localField: 'userId',
+          foreignField: '_id',
+          as: 'user'
+        }
+      },
+      { $unwind: '$user' },
+      {
+        $lookup: {
+          from: 'toys',
+          localField: 'toyId',
+          foreignField: '_id',
+          as: 'toy'
+        }
+      },
+      { $unwind: '$toy' },
+      {
+        $project: {
+          txt: 1,
+          'user._id': 1, 'user.fullname': 1,
+          'toy._id': 1, 'toy.name': 1, 'toy.price': 1
+        }
+      }
+    ]).toArray()
+
+    return savedReview
   } catch (err) {
     console.error('cannot add review', err)
     throw err

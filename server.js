@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser'
 import { toyRoutes } from './api/toy/toy.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 import { reviewRoutes } from './api/review/review.routes.js'
+import { userRoutes } from './api/user/user.routes.js'
 
 const app = express()
 
@@ -25,6 +26,7 @@ app.use(cors({
 app.use('/api/toy', toyRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/review', reviewRoutes)
+app.use('/api/user', userRoutes)
 
 const PORT = process.env.PORT || 3030
 app.listen(PORT, () => console.log(`Toy backend running on port ${PORT}`))
