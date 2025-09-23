@@ -6,6 +6,10 @@ import { authRoutes } from './api/auth/auth.routes.js'
 import { reviewRoutes } from './api/review/review.routes.js'
 import { userRoutes } from './api/user/user.routes.js'
 
+console.log('Render env check → NODE_ENV:', process.env.NODE_ENV)
+console.log('Render env check → MONGODB_URI:', process.env.MONGODB_URI)
+console.log('Render env check → DB_NAME:', process.env.DB_NAME)
+
 const app = express()
 
 const allowedOrigins = [
