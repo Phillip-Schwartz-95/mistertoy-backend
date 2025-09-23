@@ -1,3 +1,8 @@
+console.log('Render environment variables snapshot:')
+console.log('NODE_ENV:', process.env.NODE_ENV)
+console.log('MONGODB_URI:', process.env.MONGODB_URI)
+console.log('DB_NAME:', process.env.DB_NAME)
+
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
