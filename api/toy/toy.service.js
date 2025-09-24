@@ -37,6 +37,7 @@ async function add(toy) {
     price: +toy.price || 0,
     inStock: toy.inStock ?? true,
     labels: Array.isArray(toy.labels) ? toy.labels : [],
+    imgUrl: toy.imgUrl || '',
     msgs: [],
     createdAt: Date.now(),
   }
@@ -53,6 +54,7 @@ async function update(toy) {
     price: +toy.price || 0,
     inStock: !!toy.inStock,
     labels: Array.isArray(toy.labels) ? toy.labels : [],
+    imgUrl: toy.imgUrl || '',
   }
   await col.updateOne({ _id: id }, { $set: toSet })
   return { ...toy, ...toSet, _id: id }

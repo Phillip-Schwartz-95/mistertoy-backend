@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import { createServer } from 'http'
+import { Server} from 'socket.io'
+
 import { toyRoutes } from './api/toy/toy.routes.js'
 import { authRoutes } from './api/auth/auth.routes.js'
 import { reviewRoutes } from './api/review/review.routes.js'
@@ -16,7 +19,9 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:5174',
   'http://localhost:5175',
-  'https://phillip-schwartz-95.github.io'
+  'https://phillip-schwartz-95.github.io',
+  'https://mistertoy-backend-o4uh.onrender.com'
+
 ]
 
 app.use(cookieParser())
